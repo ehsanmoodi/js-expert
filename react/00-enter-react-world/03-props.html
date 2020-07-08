@@ -14,14 +14,18 @@
 
     <script type="text/babel">
 
+        function Greetings(props) {
+            return <div>Hello again {props.firstName}</div>
+        }
+
         function Hello(props) {
             return  <div>
                         <div>Hello {props.firstName} {props.lastName}</div>
-                        <div>{props.children}</div>
+                        <Greetings firstName={props.firstName} />
                     </div>;
         }
 
-        const element = <Hello firstName="Ehsan" lastName="Moodi"><p>Greetings</p></Hello>
+        const element = <Hello firstName="Ehsan" lastName="Moodi" />;
 
         ReactDOM.render(element, document.getElementById('root'));
     </script>
