@@ -15,10 +15,15 @@
     <script type="text/babel">
 
         function Hello(props) {
-            return <div>Hello {props.firstName} {props.lastName}</div>;
+            return  <div>
+                        <div>Hello {props.firstName} {props.lastName}</div>
+                        <div>{props.children}</div>
+                    </div>;
         }
 
-        ReactDOM.render(<Hello firstName="Ehsan" lastName="Moodi" />, document.getElementById('root'));
+        const element = <Hello firstName="Ehsan" lastName="Moodi"><p>Greetings</p></Hello>
+
+        ReactDOM.render(element, document.getElementById('root'));
     </script>
 </body>
 </html>
