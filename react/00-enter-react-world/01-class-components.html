@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+
+        #todo-app {
+            margin: 1em;
+            text-align: center;
+        }
+
+        #todo-list,
+        #todo-stats {
+            margin: 1em auto;
+            text-align: left;
+            width: 450px;
+        }
+
+        #todo-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        #todo-stats {
+            color: #777;
+        }
+
+        #new-todo {
+            border-radius: 5px;
+        }
+
+        .todo-input {
+            display: block;
+            font-family: Helvetica, sans-serif;
+            font-size: 20px;
+            line-height: normal;
+            margin: 5px auto 0;
+            padding: 6px;
+            width: 420px;
+        }
+
+        .todo-label {
+            color: #444;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        
+    </div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+    
+        class AddTask extends React.Component {
+            render() {
+                return <div id="todo-app">
+                            <label className="todo-label" htmlFor="new-todo">What do you want to do today?</label>
+                            <input type="text" id="new-todo" className="todo-input" placeholder="type your tasks" />
+                        </div>
+            }
+        }
+
+        class TodoItem extends React.Component {
+            render() {
+                return <div className="todo-item">
+                            <input type="checkbox" />
+                            <span className="todo-content">task 1</span>
+                        </div>
+            }
+        }
+
+        class TodoList extends React.Component {
+            render() {
+                return <div className="todo-list">
+                            <TodoItem />
+                            <TodoItem />
+                        </div>
+            }
+        }
+
+
+        class TodoApp extends React.Component{
+            render() {
+                return <div className="container">
+                            <AddTask />
+                            <TodoList />
+                        </div>
+            }
+        }
+
+        ReactDOM.render(<TodoApp />, document.getElementById('app'));
+    </script>
+</body>
+
+</html>
