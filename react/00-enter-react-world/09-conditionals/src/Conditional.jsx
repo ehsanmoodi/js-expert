@@ -36,6 +36,7 @@ export default class Conditional extends Component {
       <>
         <Greeting isLoggedIn={this.state.isLoggedIn} />
         { button }
+        { this.state.isLoggedIn && <p>Welcome user</p> }
       </>
     );
   }
