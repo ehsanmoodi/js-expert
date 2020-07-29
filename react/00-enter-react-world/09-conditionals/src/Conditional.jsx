@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Greeting from './Greeting';
 import LoginBtn from './LoginBtn';
 import LogoutBtn from './LogoutBtn';
+import Message from './Message';
 
 export default class Conditional extends Component {
 
@@ -36,7 +37,8 @@ export default class Conditional extends Component {
       <>
         <Greeting isLoggedIn={this.state.isLoggedIn} />
         { button }
-        { this.state.isLoggedIn && <p>Welcome user</p> }
+        {/* { this.state.isLoggedIn && <p>Welcome user</p> } */}
+        <Message isLoggedIn={this.state.isLoggedIn} />
       </>
     );
   }
