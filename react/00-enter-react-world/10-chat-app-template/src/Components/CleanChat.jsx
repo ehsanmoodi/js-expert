@@ -9,9 +9,33 @@ export default class CleanChat extends Component {
     super(props);
 
     this.state = {
-      title: 'Chat App'
+      title: 'Chat App',
+
+      chatsList: [
+        { type: 'sent', message: 'Good morning, sir. What can I do for you?', time: '11:37:08 am' },
+        { type: 'recieved', message: 'Well, I am just looking around.', time: '11:39:57 am' },
+        { type: 'sent', message: 'If necessary, please ask me', time: '11:40:10 am' },
+      ],
+
+      avatars: {
+        user1: 'https://bootdey.com/img/Content/avatar/avatar1.png',
+        user2: 'https://bootdey.com/img/Content/avatar/avatar2.png'
+      }
     }
 
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleSubmit(message) {
+    this.setState(state => {
+      return {
+        ...state,
+        chatsList: [
+          ...state.chatsList,
+          {type: 'sent', message, time: new Date().toLocaleDateString()}
+        ]
+      }
+    });
   }
 
   render() {
@@ -22,11 +46,13 @@ export default class CleanChat extends Component {
 
           <div className="panel" id="chat">
             
-            <Heading title={this.state.title} />
+            <Heading title={ this.state.title } />
             
-            <Body />
+            <Body 
+              chatsList={ this.state.chatsList } 
+              avatars={ this.state.avatars } />
             
-            <Footer />
+            <Footer handleSubmit={this.handleSubmit} />
 
           </div>
 

@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function Chat(props) {
   return (
-    <div className="chat">
+    <div className={`chat ${props.isLeft && 'chat-left'}`}>
       <div className="chat-avatar">
         <a className="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="right" title="">
-          <img src="{ props.gravatar }" alt="..." />
+          <img src={ props.avatar } alt="..." />
           <i></i>
         </a>
       </div>
