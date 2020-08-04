@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #007ebc;
+            margin: 20px;
+            display: flex;
+        }
+
+        div {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        class Counter extends React.Component {
+
+        constructor(props){
+            super(props)
+            this.state = {
+                count: 0
+            }
+
+            this.handleIncrease = this.handleIncrease.bind(this);
+
+            console.log('constructor');
+        }
+
+
+        static getDerivedStateFromProps() {
+            console.log('getDerivedStateFromProps');
+
+            return null;
+        }
+
+        shouldComponentUpdate() {
+            console.log('shouldComponentUpdate');
+            return true;
+        }
+
+        componentDidUpdate() {
+            console.log('componentDidUpdate');
+        }
+
+        componentDidMount() {
+            console.log('componentDidMount');
+        }
+
+
+        handleIncrease() {
+            this.setState(state => {
+                return {
+                     count: state.count + 1
+                }
+            })
+        }
+
+        render() {
+            console.log('render');
+            return (
+                <>
+                <div>{this.state.count}</div>
+                <button onClick={this.handleIncrease}>Increase Counter</button>
+                </>
+            )
+        }
+    }
+        ReactDOM.render(<Counter />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
